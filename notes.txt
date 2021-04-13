@@ -1,1 +1,4 @@
 hello_pro2
+
+# sitzung_1
+organisatorisches und erstellen von rep
