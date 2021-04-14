@@ -33,7 +33,7 @@ class Features:
        
 ##################################################################        
 
-Eingabe = "Satz aus viiiiieln Wörtern"     
+Eingabe = ""     
 
 ##################################################################
 
@@ -44,7 +44,6 @@ def main():
     print(Satz.number_uppercase_letters(Eingabe))
     print(Satz.number_lowercase_letters(Eingabe))
     
-##################################################################    
     
 if __name__ == '__main__':
     main()
