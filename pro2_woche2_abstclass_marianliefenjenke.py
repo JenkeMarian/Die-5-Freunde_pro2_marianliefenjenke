@@ -12,8 +12,16 @@ Created on Mon Apr 19 10:35:36 2021
 from abc import ABC, abstractmethod
 
 
-class abstclass(ABC):
+class Template(ABC):
     
+    def __init__(self, Input):
+        self.Input = Input
+    
+    """
+    #An dieser Stelle bin ich mir unsicher. Was gehört denn nun tatsächlich in die abstrakte Klasse?
+    Wenn ich die Aufgabe so löse wie im Video, müssten hier die  Methoden folgen, oder? Intuitiv würde ich aber hier 
+    nur die __init__ hinverschieben.
+
     @abstractmethod
     def number_of_characters(self): 
         pass
@@ -29,14 +37,11 @@ class abstclass(ABC):
     @abstractmethod 
     def number_lowercase_letters(self):
         pass
+    """
     
 ##################################################################
 
-class Features:
-    
-    def __init__(self, Input):
-   
-        self.Input = Input
+class Features(Template):
     
     
     # Zählt die Anzahl der Buchstaben 
