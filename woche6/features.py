@@ -1,0 +1,90 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri May  7 12:42:33 2021
+
+@author: maria
+"""
+
+#Prog2
+#Übung 2
+# Marian Liefen Jenke
+
+import logging
+import pandas as pd
+from abc import ABC, abstractmethod
+
+logging.basicConfig(filename = 'output_featureclass' , level=logging.DEBUG)
+
+class Template(ABC):
+    
+    def __init__(self, Input):
+        self.Input = Input
+        self.df = pd.read_csv(self.Input, index_col=0)
+    
+    """
+    #An dieser Stelle bin ich mir unsicher. Was gehört denn nun tatsächlich in die abstrakte Klasse?
+    Wenn ich die Aufgabe so löse wie im Video, müssten hier die  Methoden folgen, oder? Intuitiv würde ich aber hier 
+    nur die __init__ hinverschieben.
+    @abstractmethod
+    def number_of_characters(self): 
+        pass
+    
+    @abstractmethod
+    def number_of_letters(self):
+        pass
+    @abstractmethod
+    def number_of_uppercase_letters(self):
+        pass
+    
+    @abstractmethod 
+    def number_lowercase_letters(self):
+        pass
+    """
+    
+##################################################################
+
+class CharacterFeatures(Template):
+    
+    @classmethod
+    # Zählt die Anzahl der Buchstaben 
+    def number_of_characters(cls, Input):
+        return(len(Input)) 
+    
+    
+    @classmethod
+    # Zählt die Anzahl bestimmter Buchstaben
+    def number_of_letter(cls, Input):
+        return Input.count("i")
+    
+    @classmethod
+    # Zählt die Großbuchstaben
+    def number_uppercase_letters(cls, Input):
+        return sum(1 for c in Input if c.isupper())
+    
+    @classmethod
+    # Zählt die Kleinbuchstaben
+    def number_lowercase_letters(cls, Input):
+        return sum(1 for c in Input if c.islower())
+    
+    def normalize(cls, Input, Eingabe):
+        return round(Input/len(Eingabe), 2)
+    
+    def output_into_df(self, df, output=True):
+        pass
+       
+##################################################################        
+
+Eingabe = "Das ist ein Satz."     
+
+##################################################################
+
+def main():
+    Satz = CharacterFeatures("Satz")
+    logging.debug(Satz.number_of_characters(Eingabe))
+    logging.debug(Satz.number_of_letter(Eingabe))
+    logging.debug(Satz.number_uppercase_letters(Eingabe))
+    logging.debug(Satz.number_lowercase_letters(Eingabe))
+    
+    
+if __name__ == '__main__':
+    main()
